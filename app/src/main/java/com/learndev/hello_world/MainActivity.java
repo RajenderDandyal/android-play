@@ -41,6 +41,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.button1:
                 Log.d(TAG, "onClick: First Button");
+                mFirstButton.animate().rotation(360f).translationY(1000f).alpha(0).setDuration(5000);
+
                 break;
             case R.id.button2:
                 Log.d(TAG, "onClick: Second Button");
