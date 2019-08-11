@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
+    TextView helloWorld;
     Button mFirstButton, mSecondButton ;
     String msg = "Android : ";
 
@@ -19,9 +21,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(msg, "The onCreate() event");
-        mFirstButton = (Button) findViewById(R.id.mFirstButton);
-        mSecondButton = (Button) findViewById(R.id.button6);
-
+        mFirstButton = (Button) findViewById(R.id.button1);
+        mSecondButton = (Button) findViewById(R.id.button2);
+        helloWorld = findViewById(R.id.textHello);
         mFirstButton.setOnClickListener(MainActivity.this);
         mSecondButton.setOnClickListener(MainActivity.this);
     }
@@ -30,10 +32,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.mFirstButton:
+            case R.id.button1:
                 Log.d(TAG, "onClick: First Button");
                 break;
-            case R.id.button6:
+            case R.id.button2:
                 Log.d(TAG, "onClick: Second Button");
                 break;
         }
