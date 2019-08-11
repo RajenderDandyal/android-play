@@ -11,11 +11,13 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
-    TextView helloWorld;
-    Button mFirstButton, mSecondButton ;
+    TextView helloWorld, hiiWorld;
+    Button mFirstButton, mSecondButton;
     String msg = "Android : ";
-
-    /** Called when the activity is first created. */
+    private Boolean isHelloWorldShowing = true;
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +25,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Log.d(msg, "The onCreate() event");
         mFirstButton = (Button) findViewById(R.id.button1);
         mSecondButton = (Button) findViewById(R.id.button2);
+
         helloWorld = findViewById(R.id.textHello);
+        hiiWorld = findViewById(R.id.textHii);
+
+        helloWorld.setOnClickListener(MainActivity.this);
+        //hiiWorld.setOnClickListener(MainActivity.this);
         mFirstButton.setOnClickListener(MainActivity.this);
         mSecondButton.setOnClickListener(MainActivity.this);
     }
@@ -31,13 +38,29 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.button1:
                 Log.d(TAG, "onClick: First Button");
                 break;
             case R.id.button2:
                 Log.d(TAG, "onClick: Second Button");
                 break;
+            case R.id.textHello:
+
+                Log.d(TAG, "onClick: Hello world");
+                if (isHelloWorldShowing){
+                    helloWorld.animate().alpha(0).setDuration(1000);
+                    hiiWorld.animate().alpha(1).setDuration(1000);
+                    isHelloWorldShowing = false;
+                } else if (!isHelloWorldShowing){
+                    helloWorld.animate().alpha(1).setDuration(1000);
+                    hiiWorld.animate().alpha(0).setDuration(1000);
+                    isHelloWorldShowing = true;
+                }
+
+                break;
+
+
         }
 
     }
